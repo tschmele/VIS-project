@@ -3,7 +3,7 @@ module : visualization \
 professor : thflo \
 author : tschmele 
 
-project proposal : [here](documents\tschmele_project_proposal.pdf)
+project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/documents/tschmele_project_proposal.pdf)
 
 
 
