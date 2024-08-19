@@ -10,10 +10,13 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 ## update 1 - 04.07.2024
 - updated project schedule
 
-## update 2 - 28.07.2ß24
+## update 2 - 28.07.2024
 - added discord and stream data
 - added template
 - dataformatting WIP
+
+## update 3 - 18.08.2024
+- trimmed dataset
 
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
