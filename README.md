@@ -18,6 +18,10 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 ## update 3 - 18.08.2024
 - trimmed dataset
 
+## update 4 - 20.08.2024
+- fixed data-processing issue
+- setup timeline poc
+
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
 M2 - 18 hours - 28.07.2024 -> work in progress milestone\
