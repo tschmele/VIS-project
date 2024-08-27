@@ -1,9 +1,12 @@
+import {Timeline} from "./timeline.js";
+import { ChannelChart } from "./channel.js";
+
 // fix with node:fs later
 const folder = '../data/discord/'
 const files = [
     // 'MAIN - dragons-den [666328861985865749].csv',
-    'MAIN - general [666328804372906040].csv',
-    // 'MAIN - cringe-cafe [666328839114326026].csv',
+    // 'MAIN - general [666328804372906040].csv',
+    'MAIN - cringe-cafe [666328839114326026].csv',
     // 'MAIN - mental-health [666328887759994891].csv',
     // 'MAIN - share-stuff-you-made [666328917237563419].csv',
     // 'archived stream spoiler chats - 13-sentinels-spoiler-chat [1088233424092942406].csv',
@@ -32,13 +35,14 @@ const files = [
     // 'dragons-den - Jenshin Den [870694886746230804].csv',
     // 'dragons-den - roguelike den [1127095969348071545].csv',
     // 'Important - announcements [309158436392796161].csv',
-    'Important - stream-announcements [392451461650448385].csv',
+    // 'Important - stream-announcements [392451461650448385].csv',
     // 'Stream Stuff - jadseya-awards-2023 [1178740821168766976].csv',
     // 'Stream Stuff - stream-art-museum [484604584174813184].csv'
 ]
+const tl_activity = 'prepared/combined activitiy.csv'
 
-const margin = {top: 20, right: 30, bottom: 30, left: 40};
-const chart = d3.select('#chart');
+// const margin = {top: 20, right: 30, bottom: 30, left: 40};
+// const chart = d3.select('#chart');
 
 const start = new Date(2022, 0, 1);
 const end = new Date(2023, 11, 31);
@@ -46,128 +50,118 @@ const days = d3.utcDay.range(start, end);
 const weeks = d3.utcWeek.range(start, end);
 const months = d3.utcMonth.range(start, end);
 
-function open_file(address) {
-    return d3.csv(address, d => {
-        return {
-            Author: d.Author,
-            Date: d3.utcParse("%Y-%m-%dT%H:%M:%S.%L0000%Z")(d.Date),
-            Reactions: +d.Reactions
-        }
-    });
-}
-
-Promise.all(Array.from(files, f => open_file(folder+f)))
+/**
+ * read in the pre-formatted daily activity file for timeline
+ */
+d3.csv(folder+tl_activity, d => {
+    return {
+        Date: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.Date),
+        Activity: +d.Activity
+    }
+})
 .then((data) => {
-
-    console.log('all files loaded')
-    
-    let s_bins = [];
-
-    data.forEach(file => {
-        s_bins.push(d3.bin()
-            .value(d => d.Date)
-            .thresholds(days)(file));
+    /**
+     * create timeline
+     * data pre-formatted with activity per day
+     * TODO : bi-slider for global date-range
+     */
+    let parent_BBox = d3.select('#timeline').node().getBoundingClientRect();
+    const timeline = new Timeline({
+        parentElement: '#timeline',
+        containerWidth: parent_BBox.width,
+        timeframe: {start: start, end: end}
     });
+    timeline.data = data;
+    timeline.updateVis();
+
+    /**
+     * in theory: 
+     * create "empty" graphs for ss and cc
+     * load all other files 
+     * add the data to those graphs
+     * 
+     * current state:
+     * loading one file for cc poc
+     */
+    function open_file(location) {
+        return d3.csv(location, d => {
+            return {
+                Author: d.Author,
+                Date: d3.utcParse("%Y-%m-%dT%H:%M:%S.%L0000%Z")(d.Date),
+                Reactions: +d.Reactions
+            }
+        });
+    }
+    parent_BBox = d3.select('#channel').node().getBoundingClientRect();
+    const channel_chart = new ChannelChart({
+        parentElement: '#channel',
+        containerWidth: parent_BBox.width,
+        timeframe: {start: start, end: end}
+    });
+    Promise.all(Array.from(files, f => open_file(folder+f)))
+    .then((data) => {
+        // console.log(data);
+
+        let c_bins = d3.bin()
+            .value(d => d.Date)
+            .thresholds(weeks)(data[0]);
+
+        c_bins.forEach(bin => {
+            bin.Activity = bin.length;
+            bin.forEach(msg => {
+                bin.Activity = bin.Activity + msg.Reactions;
+            });
+        });
+
+        console.log(c_bins);
+        
+    
+        channel_chart.data = c_bins;
+        channel_chart.updateVis();
+        
+    }).catch((error) => {
+        console.log(error);
+    })
+    
+    // console.log('all files loaded')
+    
+    // let s_bins = [];
+
+    // data.forEach(file => {
+    //     s_bins.push(d3.bin()
+    //         .value(d => d.Date)
+    //         .thresholds(days)(file));
+    // });
 
     // console.log(bins);
 
     // currently only works if s_bins[0] contains a matching s_bin for all other S_bins
-    let c_bins = s_bins[0];
+    // let c_bins = s_bins[0];
 
-    c_bins.forEach(c_bin => {
-        c_bin.activity = 0;
-    });
-
-    s_bins.forEach((i_bins, i) => {
-        i_bins.forEach(s_bin => {
-            c_bins.forEach(c_bin => {
-                if (c_bin.x0 == s_bin.x0 || (c_bin.x0 < s_bin.x0 && s_bin.x0 < c_bin.x1)) {
-                    s_bin.forEach(s_msg => {
-                        if (i == 0) {
-                            c_bin.activity = c_bin.activity + s_msg.Reactions + 1;
-                        } else {
-                            c_bin.push(s_msg);
-                            c_bin.activity = c_bin.activity + s_msg.Reactions + 1;
-                        }
-                    });
-                }
-            });
-        });
-    });
-    
-    console.log('all files binned and combined');
-    console.log(c_bins);
-    
-    
-    // gen_bins.forEach(bin => {
-    //     let activity = 0
-    //     bin.forEach(msg => {
-    //         activity = activity + msg.Reactions + 1;
-    //     });
-    //     if (activity >= 10000) {
-    //         console.log(bin);
-    //     }
-    //     bins.push({
-    //         size: activity,
-    //         x0: bin.x0,
-    //         x1: bin.x1
-    //     });
+    // c_bins.forEach(c_bin => {
+    //     c_bin.activity = 0;
     // });
 
-    // ann_bins.forEach(bin => {
-    //     bins.forEach(b => {
-    //         if (b.x0 == bin.x0 || (b.x0 < bins.x0 && bin.x0 < b.x1)) {
-    //             bin.forEach(msg => {
-    //                 b.size = b.size + msg.Reactions + 1;
-    //             });
-    //         }
+    // s_bins.forEach((i_bins, i) => {
+    //     i_bins.forEach(s_bin => {
+    //         c_bins.forEach(c_bin => {
+    //             if (c_bin.x0 == s_bin.x0 || (c_bin.x0 < s_bin.x0 && s_bin.x0 < c_bin.x1)) {
+    //                 s_bin.forEach(s_msg => {
+    //                     if (i == 0) {
+    //                         c_bin.activity = c_bin.activity + s_msg.Reactions + 1;
+    //                     } else {
+    //                         c_bin.push(s_msg);
+    //                         c_bin.activity = c_bin.activity + s_msg.Reactions + 1;
+    //                     }
+    //                 });
+    //             }
+    //         });
     //     });
-    // });        
-
-    // set up histogram
-    let width = 1200 - margin.left - margin.right;
-    let height = 100 - margin.top - margin.bottom;
+    // });
     
-    let svg = chart.append('svg')
-        .attr('width', 1200)
-        .attr('height', 100);
-    let histogram = svg.append('g')
-        .attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-    let xScale = d3.scaleUtc()
-        .range([0, width])
-        .domain([start, end]);
-
-    let yScale = d3.scaleLinear()
-        .range([height, 0])
-        .domain([0, d3.max(c_bins, d => d.activity)]);
-
-    let xAxis = d3.axisBottom(xScale)
-        .tickSize(0)
-        .ticks(8);
-
-    let xAxisGroup = histogram.append('g')
-        .attr('class', 'axis x-axis')
-        .attr('transform', `translate(0, ${height})`);
+    // console.log('all files binned and combined');
+    // console.log(c_bins);
     
-    let yAxisGroup = histogram.append('g')
-        .attr('class', 'axis y-axis');
-
-    // draw chart
-    xAxisGroup.call(xAxis)
-    .selectAll('text')
-        .attr('transform', `translate(20, 5)`);
-
-    let bars = histogram.selectAll('rect')
-        .data(c_bins)
-        .enter()
-            .append('rect')
-            .attr('class', 'bar')
-            .attr('x', 1)
-            .attr('transform', d => `translate(${xScale(d.x0)}, ${yScale(d.activity)})`)
-            .attr('height', d => height - yScale(d.activity))
-            .attr('width', d => xScale(d.x1) - xScale(d.x0) - 1)
-
 }).catch((error) => {
     console.log(error);
 });

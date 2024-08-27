@@ -8,13 +8,20 @@
 </head>
 <body>
     <!-- Add HTML content, SVG drawing area, ... -->
-    <h1>JADS Activity</h1>
-    <div id='chart'></div>
+    <div id="main" class="lv1">
+        <div id="header">
+            <h1>JADS Activity</h1>
+        </div>
+        <div id="timeline" class="lv2"></div>
+        <div id="streamgraph" class="lv2"></div>
+        <div id="channel" class="lv2"></div>
+    </div>
 
     <!-- D3 bundle -->
     <script src="js/d3.v6.min.js"></script>
 
     <!-- Our JS code -->
     <script src="js/main.js" type="module"></script>
+    <script src="js/timeline.js" type="module"></script>
 </body>
 </html>

@@ -4,10 +4,60 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.bar{
-    fill: rgba(252, 253, 191, .5)
+#main{
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px;
+    margin: auto;
+}
+#timeline{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+#streamgraph{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+#channel{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
 }
 
+.lv1{
+    background-color: rgba(255, 255, 255, .05);
+}
+.lv2{
+    background-color: rgba(255, 255, 255, .07);
+}
+.lv3{
+    background-color: rgba(255, 255, 255, .08);
+}
+
+
+.axis{
+    font-size: 9px;
+}
+
+.bar{
+    fill: rgb(252, 253, 191);
+}
 .bar_highlight{
-    fill: rgba(252, 253, 191, .5)
+    fill: rgb(252, 253, 191);
+}
+
+.area{
+    stroke: rgb(183, 55, 121);
+    fill: rgb(183, 55, 121);
+}
+.line{
+    /* stroke: rgb(252, 137, 97); */
+    stroke: rgb(183, 55, 121);
+    stroke-width: 1px;
+    fill: none;
 }
