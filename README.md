@@ -22,6 +22,11 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 - fixed data-processing issue
 - setup timeline poc
 
+## update 5 - 27.08.2024
+- pre-formatted data for timeline
+- separated timeline into separate file
+- setup channel chart poc
+
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
 M2 - 18 hours - 28.07.2024 -> work in progress milestone\
