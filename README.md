@@ -20,12 +20,19 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 
 ## update 4 - 20.08.2024
 - fixed data-processing issue
-- setup timeline poc
+- setup the timeline poc
 
 ## update 5 - 27.08.2024
-- pre-formatted data for timeline
-- separated timeline into separate file
+- pre-formatted data for the timeline
+- separated the timeline into separate file
 - setup channel chart poc
+
+## update 6 - 31.08.2024
+- pre-formatted data for channel chart and server streamgraph
+- separated channel chart into separate file
+- setup streamgraph and separated it
+- added option to switch channel
+- added highlighting of selected channel in server streamgraph
 
 ### schedule v2
 M1 - 15 hours - 21.07.2024\

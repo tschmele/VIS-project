@@ -6,7 +6,7 @@ body{
 
 #main{
     width: 100%;
-    max-width: 1200px;
+    max-width: 1220px;
     padding: 10px;
     margin: auto;
 }
@@ -14,19 +14,27 @@ body{
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+#graphs{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    columns: 2;
 }
 #streamgraph{
-    width: 45%;
+    width: 95%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5px;
+    padding: 5px;
 }
 #channel{
-    width: 45%;
+    width: 95%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5px;
+    padding: 5px;
 }
 
 .lv1{
@@ -52,12 +60,12 @@ body{
 }
 
 .area{
-    stroke: rgb(183, 55, 121);
-    fill: rgb(183, 55, 121);
+    stroke: rgb(252, 137, 97);
+    fill: rgb(252, 137, 97);
 }
 .line{
-    /* stroke: rgb(252, 137, 97); */
-    stroke: rgb(183, 55, 121);
+    /* stroke: rgb(183, 55, 121); */
+    stroke: rgb(252, 137, 97);
     stroke-width: 1px;
     fill: none;
 }

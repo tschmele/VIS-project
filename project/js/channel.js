@@ -6,7 +6,8 @@ export class ChannelChart {
             containerWidth: _config.containerWidth || 500,
             containerHeight: _config.containerHeight || 300,
             margin: {top: 20, right: 30, bottom: 30, left: 40},
-            timeframe: _config.timeframe || {start: new Date(2022, 0 ,1), end: new Date(2023, 11, 31)}
+            timeframe: _config.timeframe || {start: new Date(2022, 0 ,1), end: new Date(2023, 11, 31)},
+            col: _config.col || 'MAIN/general'
         }
 
         this.initVis();
@@ -39,12 +40,12 @@ export class ChannelChart {
             .ticks(10);
 
         vis.line = d3.line()
-            .x(d => vis.xScale(d.x0))
-            .y(d => vis.yScale(d.Activity))
+            .x(d => vis.xScale(d.x0) + 1)
+            .y(d => vis.yScale(d[0][vis.config.col]))
             .curve(d3.curveMonotoneX);
         vis.area = d3.area()
-            .x(d => vis.xScale(d.x0))
-            .y1(d => vis.yScale(d.Activity))
+            .x(d => vis.xScale(d.x0) + 1)
+            .y1(d => vis.yScale(d[0][vis.config.col]))
             .y0(vis.height)
             .curve(d3.curveMonotoneX);
         
@@ -63,7 +64,7 @@ export class ChannelChart {
         let vis = this;
 
         vis.xScale.domain([vis.config.timeframe.start, vis.config.timeframe.end]);
-        vis.yScale.domain([0, d3.max(vis.data, d => d.Activity)]);
+        vis.yScale.domain([0, d3.max(vis.data, d => d[0][vis.config.col])])
 
         vis.renderVis();
     }
@@ -72,6 +73,9 @@ export class ChannelChart {
         let vis = this;
 
         vis.yAxisGroup.call(vis.yAxis);
+
+        vis.chart.selectAll('path')
+            .remove();
 
         vis.chart.append('path')
             .attr('d', vis.area(vis.data))
