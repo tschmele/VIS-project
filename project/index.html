@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discord Activity Visualization</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Add HTML content, SVG drawing area, ... -->
+    <div id="main" class="lv1">
+        <div id="header">
+            <h1>JADS Activity</h1>
+        </div>
+        <div id="timeline" class="lv2"></div>
+        <div id="graphs" class="lv2">
+            <div id="streamgraph" class="lv3"></div>
+            <div id="channel" class="lv3"></div>
+        </div>
+    </div>
+
+    <!-- D3 bundle -->
+    <script src="js/d3.v6.min.js"></script>
+
+    <!-- Our JS code -->
+    <script src="js/main.js" type="module"></script>
+    <script src="js/timeline.js" type="module"></script>
+    <script src="js/channel.js" type="module"></script>
+    <script src="js/streamgraph.js" type="module"></script>
+</body>
+</html>

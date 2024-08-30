@@ -1,0 +1,71 @@
+body{
+    background-color: #121212;
+    color: rgba(255, 255, 255, .87);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#main{
+    width: 100%;
+    max-width: 1220px;
+    padding: 10px;
+    margin: auto;
+}
+#timeline{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+#graphs{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    columns: 2;
+}
+#streamgraph{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+#channel{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+
+.lv1{
+    background-color: rgba(255, 255, 255, .05);
+}
+.lv2{
+    background-color: rgba(255, 255, 255, .07);
+}
+.lv3{
+    background-color: rgba(255, 255, 255, .08);
+}
+
+
+.axis{
+    font-size: 9px;
+}
+
+.bar{
+    fill: rgb(252, 253, 191);
+}
+.bar_highlight{
+    fill: rgb(252, 253, 191);
+}
+
+.area{
+    stroke: rgb(252, 137, 97);
+    fill: rgb(252, 137, 97);
+}
+.line{
+    /* stroke: rgb(183, 55, 121); */
+    stroke: rgb(252, 137, 97);
+    stroke-width: 1px;
+    fill: none;
+}
