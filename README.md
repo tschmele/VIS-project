@@ -33,6 +33,7 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 - setup streamgraph and separated it
 - added option to switch channel
 - added highlighting of selected channel in server streamgraph
+- finished cross-update between server streamgraph and channel chart
 
 ### schedule v2
 M1 - 15 hours - 21.07.2024\

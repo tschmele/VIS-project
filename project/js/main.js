@@ -181,11 +181,10 @@ d3.csv(folder+tl_activity, d => {
         mod_keys.splice(mod_keys.indexOf('MAIN/dragons-den'), 1);
 
         let stackedData = d3.stack()
+            .order(d3.stackOrderInsideOut)
             .offset(d3.stackOffsetSilhouette)
             .keys(keys)
             (data[1])
-        
-        console.log(stackedData);
         
         streamgraph.data = stackedData;
         streamgraph.updateVis();

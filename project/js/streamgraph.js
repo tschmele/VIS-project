@@ -31,44 +31,48 @@ export class Streamgraph {
         
         vis.xAxisGroup = vis.svg.append('g')
             // .attr('class', 'axis x-axis')
-            .attr('transform', `translate(0, ${vis.height*.8})`)
-            .call(d3.axisBottom(vis.xScale).tickSize(-vis.height*.7).ticks(8))
+            .attr('transform', `translate(0, ${vis.height*.85})`)
+            .call(d3.axisBottom(vis.xScale).tickSize(-vis.height*.8).ticks(9))
             .select('.domain').remove()
 
-        vis.svg.selectAll(".tick line").attr("stroke", "#b8b8b8")
+        vis.svg.selectAll('.tick line').attr('stroke', '#b8b8b8')
         
         vis.svg.append('text')
             .attr('text-anchor', 'end')
             .attr('x', vis.width)
-            .attr('y', vis.height-30 )
+            .attr('y', vis.height-25 )
             .text('Time (year)')
 
         vis.yScale = d3.scaleLinear()
-            .domain([-150000, 150000])
+            .domain([-150000, 130000])
+            // .domain([-70000, 60000])
             .range([vis.height, 0]);
 
         vis.color = d3.scaleSequential(d3.interpolateMagma);
 
-        vis.Tooltip = vis.svg.append("text")
-            .attr("x", 0)
-            .attr("y", 0)
-            .style("opacity", 0)
-            .style("font-size", 17)
+        vis.Tooltip = vis.svg.append('text')
+            .attr('x', 0)
+            .attr('y', 0)
+            .style('opacity', 1)
+            .style('font-size', 16)
         
         // Three function that change the tooltip when user hover / move / leave a cell
         vis.mouseover = function(d) {
-            vis.Tooltip.style("opacity", 1)
-            d3.selectAll(".myArea").style("opacity", .2)
+            d3.selectAll('.myArea').style('opacity', .2)
             d3.select(this)
-                .style("stroke", "black")
-                .style("opacity", 1)
+                .style('stroke', 'black')
+                .style('opacity', 1)
         }
         vis.mousemove = function(d,i) {
             vis.Tooltip.text(i.key)
         }
         vis.mouseleave = function(d) {
-            vis.Tooltip.style("opacity", 0)
-            d3.selectAll(".myArea").style("opacity", 1).style("stroke", "none")
+            vis.Tooltip.text(vis.config.highlight)
+            d3.selectAll('.myArea').style('opacity', 1).style('stroke', 'none')
+        }
+        vis.click = function(d, i) {
+            document.getElementById('channel_select').value = i.key;
+            document.getElementById('channel_select').dispatchEvent(new Event('change'));
         }
 
         vis.area = d3.area()
@@ -87,7 +91,8 @@ export class Streamgraph {
 
     renderVis() {
         let vis = this;
-        
+
+        vis.Tooltip.text(vis.config.highlight)
         vis.svg.selectAll('mylayers')
             .data(vis.data)
             .enter()
@@ -95,8 +100,9 @@ export class Streamgraph {
                 .attr('class', 'myArea')
                 .style('fill', d => (d.key == vis.config.highlight) ? vis.color(.75) : vis.color(.5))
                 .attr('d', vis.area)
-                .on("mouseover", vis.mouseover)
-                .on("mousemove", vis.mousemove)
-                .on("mouseleave", vis.mouseleave);
+                .on('mouseover', vis.mouseover)
+                .on('mousemove', vis.mousemove)
+                .on('mouseleave', vis.mouseleave)
+                .on('click', vis.click);
     }
 }
