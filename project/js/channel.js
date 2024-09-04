@@ -38,11 +38,17 @@ export class ChannelChart {
         vis.yAxis = d3.axisLeft(vis.yScale)
             .tickSize(5)
             .ticks(10);
+        
+        vis.clip = vis.chart.append("defs").append("svg:clipPath")
+            .attr("id", "channel_clip")
+            .append("svg:rect")
+                .attr("width", vis.width )
+                .attr("height", vis.height )
+                .attr("x", 0)
+                .attr("y", 0);
+        vis.display_area = vis.chart.append('g')
+            .attr("clip-path", "url(#channel_clip)");
 
-        vis.line = d3.line()
-            .x(d => vis.xScale(d.x0) + 1)
-            .y(d => vis.yScale(d[0][vis.config.col]))
-            .curve(d3.curveMonotoneX);
         vis.area = d3.area()
             .x(d => vis.xScale(d.x0) + 1)
             .y1(d => vis.yScale(d[0][vis.config.col]))
@@ -73,16 +79,16 @@ export class ChannelChart {
         let vis = this;
 
         vis.yAxisGroup.call(vis.yAxis);
+        vis.xAxisGroup.call(vis.xAxis)
+            .selectAll('text')
+            .attr('transform', `translate(0, 5)`);
 
-        vis.chart.selectAll('path')
+        vis.display_area.selectAll('.area')
             .remove();
 
-        vis.chart.append('path')
+        vis.display_area.append('path')
             .attr('d', vis.area(vis.data))
             .attr('class', 'path area');
 
-        vis.chart.append('path')
-            .attr('d', vis.line(vis.data))
-            .attr('class', 'path line');
     }
 }

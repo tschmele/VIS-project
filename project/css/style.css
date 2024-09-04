@@ -47,6 +47,9 @@ body{
     background-color: rgba(255, 255, 255, .08);
 }
 
+.label{
+    color: rgba(255, 255, 255, .87);
+}
 
 .axis{
     font-size: 9px;
@@ -68,4 +71,31 @@ body{
     stroke: rgb(252, 137, 97);
     stroke-width: 1px;
     fill: none;
+}
+
+svg {
+	font-family: sans-serif;
+}
+
+rect.overlay {
+	stroke: none;
+}
+
+rect.selection {
+	stroke: rgba(255, 255, 255, .87);
+    fill: none;
+    fill-opacity: 0.6;
+}
+
+#labelleft, #labelright {
+	/* dominant-baseline: hanging; */
+    font-size: 12px;
+}
+
+#labelleft {
+	text-anchor: end;
+}
+
+#labelright {
+	text-anchor: start;
 }

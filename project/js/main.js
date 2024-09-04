@@ -1,75 +1,78 @@
-import {Timeline} from "./timeline.js";
+import { Timeline } from "./timeline.js";
 import { ChannelChart } from "./channel.js";
 import { Streamgraph } from "./streamgraph.js";
+// import { slider_snap } from "./slider.js";
 
-// fix with node:fs later
-const folder = '../data/discord/'
-const individual_files = [
-    'MAIN - general [666328804372906040].csv',
-    'MAIN - dragons-den [666328861985865749].csv',
-    'MAIN - cringe-cafe [666328839114326026].csv',
-    'MAIN - mental-health [666328887759994891].csv',
-    'MAIN - share-stuff-you-made [666328917237563419].csv',
-    'archived stream spoiler chats - 13-sentinels-spoiler-chat [1088233424092942406].csv',
-    'archived stream spoiler chats - armored-core-spoiler-garage [1145038500534702120].csv',
-    'archived stream spoiler chats - botwtotk-shrine-spoiler [1102673766837919844].csv',
-    'archived stream spoiler chats - call-me-al-somnium-spoiler [1061323799619969134].csv',
-    'archived stream spoiler chats - dp-spoiler-chat-on-jads [1082723283700551880].csv',
-    'archived stream spoiler chats - ff16-spoilers [1121474497099337821].csv',
-    'archived stream spoiler chats - ghost-trick-spoilers [1128723347300175953].csv',
-    'archived stream spoiler chats - inscryption-spoiler-deck [1143546861387522048].csv',
-    'archived stream spoiler chats - lis-true-colors-spoilers [1052997665610285137].csv',
-    'archived stream spoiler chats - outer-wilds-spoiler-chat [746004186155450458].csv',
-    'archived stream spoiler chats - rabiribi-spoiler-burrow-for-some-reason [1130898595512586261].csv',
-    'archived stream spoiler chats - staaaaaaaaaaaaaaaaaaahfield-spoiler-den [1146903148972216332].csv',
-    'archived stream spoiler chats - va11-hall-of-spoilers [1179100150191370371].csv',
-    'archived stream spoiler chats - you-can-call-me-ai-2-spoiler-chat [1134163920769273906].csv',
-    'archived stream spoiler chats - zero-escape-spoiler-chan [974341120198844467].csv',
-    'dragons-den - 9 rows 9 columns 9 boxes [1055403674798653450].csv',
-    'dragons-den - AI Somnium Files 2 spoiler den [989780272067264525].csv',
-    'dragons-den - baldurs gate 3 goty den [1173841759890051093].csv',
-    'dragons-den - Elden Ring Pen Shadow of the Nerd Tree [945882707785826375].csv',
-    'dragons-den - evolve idol [1116437039706026105].csv',
-    'dragons-den - game jam dvd [1138496234982748251].csv',
-    'dragons-den - GoW Raggyrock spoiler Den [1039499797729648680].csv',
-    'dragons-den - Guilty Gear Den [874780655093944330].csv',
-    'dragons-den - Jenshin Den [870694886746230804].csv',
-    'dragons-den - roguelike den [1127095969348071545].csv',
-    'Important - announcements [309158436392796161].csv',
-    'Important - stream-announcements [392451461650448385].csv',
-    'Stream Stuff - jadseya-awards-2023 [1178740821168766976].csv',
-    'Stream Stuff - stream-art-museum [484604584174813184].csv'
+const FOLDER = '../data/discord/prepared/'
+const FILES = [
+    'stacked daily activity.csv',
+    'stacked weekly activity.csv'
 ]
-const bundled_files = [
-    'prepared/stacked daily activity.csv',
-    'prepared/stacked weekly activity.csv'
-]
+const TL_FILE = 'combined activitiy.csv'
 
-const tl_activity = 'prepared/combined activitiy.csv'
+const SELECTOR_CHANNEL_ID = 'channel_select';
+const CHANNEL_ID = '#channel';
+const TIMELINE_ID = '#timeline';
+const STREAMGRAPH_ID = '#streamgraph';
 
-function open_individual_file(location) {
-    return d3.csv(location, d => {
-        return {
-            Author: d.Author,
-            Date: d3.utcParse("%Y-%m-%dT%H:%M:%S.%L0000%Z")(d.Date),
-            Reactions: +d.Reactions
-        }
-    });
-}
-function open_bundled_file(location) {
+const START = new Date(2022, 0, 1);
+const END = new Date(2024, 0, 1);
+const DAYS = d3.utcDay.range(START, END);
+const WEEKS = d3.utcWeek.range(START, END);
+const MONTHS = d3.utcMonth.range(START, END);
+
+function open_file(location) {
     return d3.csv(location);
 }
 
-const start = new Date(2022, 0, 1);
-const end = new Date(2024, 0, 1);
-const days = d3.utcDay.range(start, end);
-const weeks = d3.utcWeek.range(start, end);
-const months = d3.utcMonth.range(start, end);
+/**
+ * function to set up the selector for channel chart
+ * @param {[]} keys
+ * set of values to be sorted into selector
+ * 
+ * currently only works for keys formatted as 'optgroup/option'
+ * @param {string} id  
+ * id for selector element
+ * 
+ * @returns {object} 
+ * label - contains a reference to the <label> element
+ * 
+ * selector - contains the actual selector
+ */
+function create_selector(keys, id) {
+    const label = channel.append('label')
+        .attr('for', id)
+        .text('activity in channel: ');
+    const selector = channel.append('select')
+        .attr('name', 'channels')
+        .attr('id', id);
+    let categories = [];
+    keys.forEach(key => {
+        let file_name = key.split('/');
+        let category = file_name[0];
+        let channel_name = file_name[1];
+
+        let optgroup = categories.find(c => c.attr('label') == category);
+        if (optgroup == undefined) {
+            categories.push(selector.append('optgroup')
+                .attr('label', category));
+            
+            categories[categories.length-1].append('option')
+                .attr('value', key)
+                .text(channel_name);
+        } else {
+            optgroup.append('option')
+                .attr('value', key)
+                .text(channel_name);
+        }
+    });
+    return {label: label, selector: selector};
+}
 
 /**
  * read in the pre-formatted daily activity file for timeline
  */
-d3.csv(folder+tl_activity, d => {
+d3.csv(FOLDER+TL_FILE, d => {
     return {
         Date: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.Date),
         Activity: +d.Activity
@@ -80,72 +83,39 @@ d3.csv(folder+tl_activity, d => {
     /**
      * create timeline
      * data pre-formatted with activity per day
-     * TODO : bi-slider for global date-range
      */
-    let timeline_BBox = d3.select('#timeline').node().getBoundingClientRect();
+    let timeline_BBox = d3.select(TIMELINE_ID).node().getBoundingClientRect();
     const timeline = new Timeline({
-        parentElement: '#timeline',
+        parentElement: TIMELINE_ID,
         containerWidth: timeline_BBox.width,
-        timeframe: {start: start, end: end}
+        timeframe: {start: START, end: END}
     });
     timeline.data = t_data;
     timeline.updateVis();
-
-    /**
-     * set up the selector for channel chart
-     */
-    let channel = d3.select('#channel');
-    let channel_BBox = channel.node().getBoundingClientRect();
-
-    const selector_label = channel.append('label')
-        .attr('for', 'channel_select')
-        .text('activity in channel: ');
-    const channel_selector = channel.append('select')
-        .attr('name', 'channels')
-        .attr('id', 'channel_select');
-    let categories = [];
-    individual_files.forEach(file => {
-        let file_name = file.split(' - ');
-        let channel_name = file_name[1].split(' ');
-        channel_name.pop();
-        channel_name = channel_name.join('-');
-
-        let optgroup = categories.find(c => c.attr('label') == file_name[0]);
-        if (optgroup == undefined) {
-            categories.push(channel_selector.append('optgroup')
-                .attr('label', file_name[0]));
-            
-            categories[categories.length-1].append('option')
-                .attr('value', file_name[0] + '/' + channel_name)
-                .text(channel_name);
-        } else {
-            optgroup.append('option')
-                .attr('value', file_name[0] + '/' + channel_name)
-                .text(channel_name);
-        }
-    });
 
     /**
      * in theory: 
      * create "empty" graphs for ss and cc
      * load all other files 
      * add the data to those graphs
-     */
+    */
+    let channel = d3.select(CHANNEL_ID);
+    let channel_BBox = channel.node().getBoundingClientRect();
     const channel_chart = new ChannelChart({
-        parentElement: '#channel',
+        parentElement: CHANNEL_ID,
         containerWidth: channel_BBox.width,
         containerHeight: 400,
-        timeframe: {start: start, end: end}
+        timeframe: {start: START, end: END}
     });
     const streamgraph = new Streamgraph({
-        parentElement: '#streamgraph',
+        parentElement: STREAMGRAPH_ID,
         containerWidth: channel_BBox.width,
-        containerHeight: channel_chart.config.containerHeight + d3.select('#channel_select').node().getBoundingClientRect().height,
-        timeframe: {start: start, end: end},
-        highlight: document.getElementById('channel_select').value
+        containerHeight: channel_chart.config.containerHeight + d3.select(SELECTOR_CHANNEL_ID).node().getBoundingClientRect().height,
+        timeframe: {start: START, end: END},
+        highlight: d3.select(SELECTOR_CHANNEL_ID).node().value
     });
 
-    Promise.all(Array.from(bundled_files, f => open_bundled_file(folder+f)))
+    Promise.all(Array.from(FILES, f => open_file(FOLDER+f)))
     .then((data) => {
         data.forEach(file => {
             file.forEach(element => {
@@ -157,18 +127,26 @@ d3.csv(folder+tl_activity, d => {
             });
         });
         let keys = data[0].columns.slice(1);
+        const channel_selector = create_selector(keys, SELECTOR_CHANNEL_ID);
 
+        /**
+         * format the bins for channel chart
+         * d_bins => daily bins
+         * w_bins => weekly bins
+         */
         let d_bins = d3.bin()
             .value(d => d.Date)
-            .thresholds(days)(data[0]);
-
+            .thresholds(DAYS)(data[0]);
         let w_bins = d3.bin()
             .value(d => d.Date)
-            .thresholds(weeks)(data[1]);
+            .thresholds(WEEKS)(data[1]);
 
         channel_chart.data = w_bins;
 
-        document.getElementById('channel_select').addEventListener('change', function() {
+        /**
+         * add event listener to update cc and ss on selector change
+         */
+        d3.select(SELECTOR_CHANNEL_ID).node().addEventListener('change', function() {
             channel_chart.config.col = this.value;
             streamgraph.config.highlight = this.value;
             channel_chart.updateVis();
@@ -177,17 +155,42 @@ d3.csv(folder+tl_activity, d => {
         
         channel_chart.updateVis();
 
-        let mod_keys = data[0].columns.slice(1);
-        mod_keys.splice(mod_keys.indexOf('MAIN/dragons-den'), 1);
+        // // alternative set of keys to exclude dragons-den from server streamgraph
+        // let mod_keys = data[0].columns.slice(1);
+        // mod_keys.splice(mod_keys.indexOf('MAIN/dragons-den'), 1);
 
-        let stackedData = d3.stack()
+        /**
+         * format the stacks for server streamgraph
+         * d_stacks => daily values
+         * w_stacks => weekly values
+         */
+        let d_stacks = d3.stack()
+            .order(d3.stackOrderInsideOut)
+            .offset(d3.stackOffsetSilhouette)
+            .keys(keys)
+            (data[0])
+        let w_stacks = d3.stack()
             .order(d3.stackOrderInsideOut)
             .offset(d3.stackOffsetSilhouette)
             .keys(keys)
             (data[1])
         
-        streamgraph.data = stackedData;
+        streamgraph.data = w_stacks;
+        streamgraph.config.interval = 'Weeks';
         streamgraph.updateVis();
+
+        /**
+         * add event listener for adjusting the range of the timeline
+         * updates both other visualizations
+         */
+        timeline.svg.node().addEventListener('rendered', e => {
+            let tframe = e.detail.tframe
+            channel_chart.config.timeframe = tframe;
+            streamgraph.config.timeframe = tframe;
+
+            channel_chart.updateVis();
+            streamgraph.updateVis();
+        });
 
     }).catch((error) => {
         console.log(error);
