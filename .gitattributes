@@ -1,3 +1,4 @@
 *.csv filter=lfs diff=lfs merge=lfs -text
 *.csv !text !filter !merge !diff
 /data/discord/MAIN[[:space:]]-[[:space:]]dragons-den[[:space:]]\[666328861985865749\].csv filter=lfs diff=lfs merge=lfs -text
+/data/discord/individual_channels/MAIN[[:space:]]-[[:space:]]dragons-den[[:space:]]\[666328861985865749\].csv filter=lfs diff=lfs merge=lfs -text
