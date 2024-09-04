@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta, timezone
 
-folder = 'data/discord/'
+folder = 'data/discord/individual_channels/'
 target = 'data/discord/prepared/'
 
 files = [f for f in listdir(folder) if isfile(join(folder, f))]

@@ -35,6 +35,11 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 - added highlighting of selected channel in server streamgraph
 - finished cross-update between server streamgraph and channel chart
 
+## update 7 - 03.09.2024
+- added timeframe slider to the timeline
+- made server streamgraph and channel chart update xAxis based on timefram
+- reorganising and cleaning up
+
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
 M2 - 18 hours - 28.07.2024 -> work in progress milestone\

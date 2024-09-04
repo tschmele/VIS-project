@@ -9,8 +9,9 @@ const FILES = [
     'stacked weekly activity.csv'
 ]
 const TL_FILE = 'combined activitiy.csv'
+const STREAM_FILE = '../data/streams/streams.csv'
 
-const SELECTOR_CHANNEL_ID = 'channel_select';
+const SELECTOR_CHANNEL_ID = '#channel_select';
 const CHANNEL_ID = '#channel';
 const TIMELINE_ID = '#timeline';
 const STREAMGRAPH_ID = '#streamgraph';
@@ -31,21 +32,21 @@ function open_file(location) {
  * set of values to be sorted into selector
  * 
  * currently only works for keys formatted as 'optgroup/option'
- * @param {string} id  
- * id for selector element
+ * @param {object} c 
+ * should be html element with id="channel"
  * 
  * @returns {object} 
  * label - contains a reference to the <label> element
  * 
  * selector - contains the actual selector
  */
-function create_selector(keys, id) {
-    const label = channel.append('label')
-        .attr('for', id)
+function create_selector(keys, c) {
+    const label = c.append('label')
+        .attr('for', 'channel_select')
         .text('activity in channel: ');
-    const selector = channel.append('select')
+    const selector = c.append('select')
         .attr('name', 'channels')
-        .attr('id', id);
+        .attr('id', 'channel_select');
     let categories = [];
     keys.forEach(key => {
         let file_name = key.split('/');
@@ -95,26 +96,10 @@ d3.csv(FOLDER+TL_FILE, d => {
 
     /**
      * in theory: 
-     * create "empty" graphs for ss and cc
      * load all other files 
+     * create "empty" graphs for ss and cc
      * add the data to those graphs
     */
-    let channel = d3.select(CHANNEL_ID);
-    let channel_BBox = channel.node().getBoundingClientRect();
-    const channel_chart = new ChannelChart({
-        parentElement: CHANNEL_ID,
-        containerWidth: channel_BBox.width,
-        containerHeight: 400,
-        timeframe: {start: START, end: END}
-    });
-    const streamgraph = new Streamgraph({
-        parentElement: STREAMGRAPH_ID,
-        containerWidth: channel_BBox.width,
-        containerHeight: channel_chart.config.containerHeight + d3.select(SELECTOR_CHANNEL_ID).node().getBoundingClientRect().height,
-        timeframe: {start: START, end: END},
-        highlight: d3.select(SELECTOR_CHANNEL_ID).node().value
-    });
-
     Promise.all(Array.from(FILES, f => open_file(FOLDER+f)))
     .then((data) => {
         data.forEach(file => {
@@ -127,7 +112,26 @@ d3.csv(FOLDER+TL_FILE, d => {
             });
         });
         let keys = data[0].columns.slice(1);
-        const channel_selector = create_selector(keys, SELECTOR_CHANNEL_ID);
+        
+        /**
+         * create empty visualizations
+        */
+        let channel = d3.select(CHANNEL_ID);
+        let channel_BBox = channel.node().getBoundingClientRect();
+        const channel_selector = create_selector(keys, channel);
+        const channel_chart = new ChannelChart({
+            parentElement: CHANNEL_ID,
+            containerWidth: channel_BBox.width,
+            containerHeight: 400,
+            timeframe: {start: START, end: END}
+        });
+        const streamgraph = new Streamgraph({
+            parentElement: STREAMGRAPH_ID,
+            containerWidth: channel_BBox.width,
+            containerHeight: channel_chart.config.containerHeight + d3.select(SELECTOR_CHANNEL_ID).node().getBoundingClientRect().height,
+            timeframe: {start: START, end: END},
+            highlight: d3.select(SELECTOR_CHANNEL_ID).node().value
+        });
 
         /**
          * format the bins for channel chart
@@ -164,18 +168,18 @@ d3.csv(FOLDER+TL_FILE, d => {
          * d_stacks => daily values
          * w_stacks => weekly values
          */
-        let d_stacks = d3.stack()
-            .order(d3.stackOrderInsideOut)
-            .offset(d3.stackOffsetSilhouette)
-            .keys(keys)
-            (data[0])
         let w_stacks = d3.stack()
             .order(d3.stackOrderInsideOut)
             .offset(d3.stackOffsetSilhouette)
             .keys(keys)
             (data[1])
+        let d_stacks = d3.stack()
+            .order(d3.stackOrderInsideOut)
+            .offset(d3.stackOffsetSilhouette)
+            .keys(keys)
+            (data[0])
         
-        streamgraph.data = w_stacks;
+        streamgraph.data = [w_stacks, d_stacks];
         streamgraph.config.interval = 'Weeks';
         streamgraph.updateVis();
 

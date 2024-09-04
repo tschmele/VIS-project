@@ -117,7 +117,7 @@ export class Streamgraph {
 
         vis.Tooltip.text(vis.config.highlight)
         vis.display_area.selectAll('mylayers')
-            .data(vis.data)
+            .data((vis.config.interval == 'Weeks') ? vis.data[0] : vis.data[1])
             .join(
                 enter => enter.append('path'),
                 update => update,
