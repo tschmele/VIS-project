@@ -6,9 +6,10 @@ body{
 
 #main{
     width: 100%;
-    max-width: 1220px;
+    max-width: 1600px;
     padding: 10px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 #timeline{
     width: 100%;
@@ -17,21 +18,39 @@ body{
     margin-bottom: 10px;
 }
 #graphs{
-    width: 100%;
+    width: 98%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
+    padding: 1%;
     columns: 2;
 }
 #streamgraph{
-    width: 95%;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
 }
 #channel{
-    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+#streams{
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding: 1%;
+    columns: 2;
+}
+#stream_selection{
+    /* height: 200px; */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+#matrix{
+    /* height: 200px; */
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
@@ -46,13 +65,53 @@ body{
 .lv3{
     background-color: rgba(255, 255, 255, .08);
 }
+.lv4{
+    background-color: rgba(255, 255, 255, .09);
+}
+.lv6{
+    background-color: rgba(255, 255, 255, .11);
+}
+.lv8{
+    background-color: rgba(255, 255, 255, .12);
+}
+.lv12{
+    background-color: rgba(255, 255, 255, .14);
+}
+.lv16{
+    background-color: rgba(255, 255, 255, .15);
+}
+.lv24{
+    background-color: rgba(255, 255, 255, .16);
+}
+
+.tooltip{
+    pointer-events: none;
+}
+
+.infobox{
+    background-color: rgba(0, 0, 0, 0.95);
+    box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.crosshair{
+    stroke-width: 1;
+    visibility: hidden;
+}
+
+.stream-highlight{
+    fill: rgba(0, 0, 4, .3);
+    stroke: rgb(0, 0, 4);
+    /* opacity: .2; */
+    /* stroke-width: 2; */
+}
 
 .label{
-    color: rgba(255, 255, 255, .87);
+    fill: rgba(255, 255, 255, .87);
+    font-size: 16pt;
 }
 
 .axis{
-    font-size: 9px;
+    font-size: 9pt;
 }
 
 .bar{
@@ -62,15 +121,11 @@ body{
     fill: rgb(252, 253, 191);
 }
 
-.area{
-    stroke: rgb(252, 137, 97);
-    fill: rgb(252, 137, 97);
+.myArea{
+    cursor: none;
 }
-.line{
-    /* stroke: rgb(183, 55, 121); */
-    stroke: rgb(252, 137, 97);
-    stroke-width: 1px;
-    fill: none;
+.cArea{
+    cursor: none;
 }
 
 svg {

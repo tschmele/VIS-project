@@ -75,7 +75,8 @@ export class Timeline {
                 .attr('transform', d => `translate(${vis.xScale(d.Date)}, ${vis.yScale(d.Activity)})`)
                 .attr('opacity', d => (vis.config.timeframe.start <= d.Date && d.Date <= vis.config.timeframe.end) ? 1 : .2)
                 .attr('height', d => vis.height - vis.yScale(d.Activity))
-                .attr('width', d => vis.xScale(d3.utcDay.offset(d.Date, 1)) - vis.xScale(d.Date) - 1)
+                // .attr('width', d => vis.xScale(d3.utcDay.offset(d.Date, 1)) - vis.xScale(d.Date) - 1)
+                .attr('width', 1)
         
         vis.svg.node().dispatchEvent(new CustomEvent('rendered', {detail: {tframe: vis.config.timeframe}}));
     }

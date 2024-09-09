@@ -40,6 +40,13 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 - made server streamgraph and channel chart update xAxis based on timefram
 - reorganising and cleaning up
 
+## update 8 - 08.09.2024
+- added tooltip boxes to streamgraph and chart
+- added crosshair pointer to both
+- added parallel tooltip indicator for mouseX
+- created first draft stream-selection
+- setup stream highlight poc
+
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
 M2 - 18 hours - 28.07.2024 -> work in progress milestone\

@@ -9,15 +9,18 @@ const FILES = [
     'stacked weekly activity.csv'
 ]
 const TL_FILE = 'combined activitiy.csv'
-const STREAM_FILE = '../data/streams/streams.csv'
+const STREAM_FILE = '../data/stream/streams.csv'
 
 const SELECTOR_CHANNEL_ID = '#channel_select';
 const CHANNEL_ID = '#channel';
 const TIMELINE_ID = '#timeline';
 const STREAMGRAPH_ID = '#streamgraph';
 
+const STREAM_SELECTION_ID = '#stream_selection';
+const MATRIX_ID = '#matrix';
+
 const START = new Date(2022, 0, 1);
-const END = new Date(2024, 0, 1);
+const END = new Date(2023, 11, 31);
 const DAYS = d3.utcDay.range(START, END);
 const WEEKS = d3.utcWeek.range(START, END);
 const MONTHS = d3.utcMonth.range(START, END);
@@ -42,6 +45,7 @@ function open_file(location) {
  */
 function create_selector(keys, c) {
     const label = c.append('label')
+        .attr('class', 'label')
         .attr('for', 'channel_select')
         .text('activity in channel: ');
     const selector = c.append('select')
@@ -123,12 +127,16 @@ d3.csv(FOLDER+TL_FILE, d => {
             parentElement: CHANNEL_ID,
             containerWidth: channel_BBox.width,
             containerHeight: 400,
-            timeframe: {start: START, end: END}
+            timeframe: {start: START, end: END},
+            keys: keys
         });
+        d3.select(SELECTOR_CHANNEL_ID).node().value = channel_chart.config.col;
+        let sgraph = d3.select(STREAMGRAPH_ID);
+        let sgraph_BBox = sgraph.node().getBoundingClientRect();
         const streamgraph = new Streamgraph({
             parentElement: STREAMGRAPH_ID,
-            containerWidth: channel_BBox.width,
-            containerHeight: channel_chart.config.containerHeight + d3.select(SELECTOR_CHANNEL_ID).node().getBoundingClientRect().height,
+            containerWidth: sgraph_BBox.width,
+            containerHeight: channel.node().getBoundingClientRect().height,
             timeframe: {start: START, end: END},
             highlight: d3.select(SELECTOR_CHANNEL_ID).node().value
         });
@@ -141,9 +149,15 @@ d3.csv(FOLDER+TL_FILE, d => {
         let d_bins = d3.bin()
             .value(d => d.Date)
             .thresholds(DAYS)(data[0]);
+        d_bins[d_bins.length - 1].x1 = END;
+        d_bins.push(d_bins[d_bins.length - 1]);
+        d_bins[d_bins.length - 1].x0 = END;
         let w_bins = d3.bin()
             .value(d => d.Date)
             .thresholds(WEEKS)(data[1]);
+        w_bins[w_bins.length - 1].x1 = END;
+        w_bins.push(w_bins[w_bins.length - 1]);
+        w_bins[w_bins.length - 1].x0 = END;
 
         channel_chart.data = w_bins;
 
@@ -156,8 +170,6 @@ d3.csv(FOLDER+TL_FILE, d => {
             channel_chart.updateVis();
             streamgraph.updateVis();
         });
-        
-        channel_chart.updateVis();
 
         // // alternative set of keys to exclude dragons-den from server streamgraph
         // let mod_keys = data[0].columns.slice(1);
@@ -172,16 +184,41 @@ d3.csv(FOLDER+TL_FILE, d => {
             .order(d3.stackOrderInsideOut)
             .offset(d3.stackOffsetSilhouette)
             .keys(keys)
-            (data[1])
+            (data[1]);
         let d_stacks = d3.stack()
             .order(d3.stackOrderInsideOut)
             .offset(d3.stackOffsetSilhouette)
             .keys(keys)
-            (data[0])
-        
+            (data[0]);
+
         streamgraph.data = [w_stacks, d_stacks];
         streamgraph.config.interval = 'Weeks';
-        streamgraph.updateVis();
+        if (streamgraph.config.interval == 'Weeks') {
+            keys.sort((a, b) => {
+                let x = 0,
+                    y = 0;
+                w_stacks.forEach(e => {
+                    if (e.key == a) { x = e.index; }
+                    else if (e.key == b) { y = e.index; }
+                });
+                if (x < y) { return -1; }
+                if (x > y) { return 1; }
+                return 0;
+            });
+        } else {
+            keys.sort((a, b) => {
+                let x = 0,
+                    y = 0;
+                d_stacks.forEach(e => {
+                    if (e.key == a) { x = e.index; }
+                    else if (e.key == b) { y = e.index; }
+                });
+                if (x < y) { return -1; }
+                if (x > y) { return 1; }
+                return 0;
+            });
+        }
+        channel_chart.config.keys = keys;
 
         /**
          * add event listener for adjusting the range of the timeline
@@ -194,6 +231,125 @@ d3.csv(FOLDER+TL_FILE, d => {
 
             channel_chart.updateVis();
             streamgraph.updateVis();
+        });
+        
+        streamgraph.updateVis();
+        channel_chart.updateVis();
+
+        /**
+         * TODO anything stream data related
+         */
+        d3.csv(STREAM_FILE, d => {
+            return {
+                Stream: d.Stream,
+                Date: d3.utcParse('%Y-%m-%dT%H:%M:%S.%L%Z')(d.Date),
+                Duration: +d.Duration
+            }
+        }).then(data => {
+            let stream_list = [];
+            data.forEach(stream => {
+                if (stream_list.length == 0) {
+                    stream_list.push({
+                        topic: stream['Stream'],
+                        selected: false,
+                        streams: [{
+                            start: stream['Date'],
+                            end: new Date(stream['Date'].getTime() + stream['Duration'])
+                        }]
+                    });
+                } else {
+                    if (stream_list[stream_list.length - 1].topic == stream['Stream']) {
+                        stream_list[stream_list.length - 1].streams.push({
+                            start: stream['Date'],
+                            end: new Date(stream['Date'].getTime() + stream['Duration'])
+                        });
+                    } else {
+                        stream_list.push({
+                            topic: stream['Stream'],
+                            selected: false,
+                            streams: [{
+                                start: stream['Date'],
+                                end: new Date(stream['Date'].getTime() + stream['Duration'])
+                            }]
+                        });
+                    }
+                }
+            });
+            
+            const click = function(d, i) {
+                if (i.selected) {
+                    i.selected = false;
+                    d3.select(this).style('background-color', '#000');
+                    d3.select(this).style('color', '#fff');
+                } else {
+                    i.selected = true;
+                    d3.select(this).style('background-color', '#fff');
+                    d3.select(this).style('color', '#000');
+                }
+                channel_chart.s_list = stream_list;
+                streamgraph.s_list = stream_list;
+                channel_chart.highlightStream();
+                streamgraph.highlightStream();
+                
+            }
+
+            let stream_label = d3.select(STREAM_SELECTION_ID).append('span')
+                .attr('class', 'label')
+                .text('select stream topics to highlight: ');
+            let reset_button = d3.select(STREAM_SELECTION_ID).append('button')
+                .attr('class', 'button stream-button')
+                .html('reset everything')
+                .style('background-color', '#000')
+                .style('color', '#fff')
+                .style('opacity', .87)
+                .on('click', (d, i) => {
+                    stream_list.forEach(stream => {
+                        stream.selected = false;
+                    });
+                    button_group.selectAll('button')
+                        .style('background-color', '#000')
+                        .style('color', '#fff');
+
+                    channel_chart.s_list = stream_list;
+                    streamgraph.s_list = stream_list;
+                    channel_chart.highlightStream();
+                    streamgraph.highlightStream();
+                });
+            let everything_button = d3.select(STREAM_SELECTION_ID).append('button')
+                .attr('class', 'button stream-button')
+                .html('select everything')
+                .style('background-color', '#000')
+                .style('color', '#fff')
+                .style('opacity', .87)
+                .on('click', (d, i) => {
+                    stream_list.forEach(stream => {
+                        stream.selected = true;
+                    });
+                    button_group.selectAll('button')
+                        .style('background-color', '#fff')
+                        .style('color', '#000');
+
+                    channel_chart.s_list = stream_list;
+                    streamgraph.s_list = stream_list;
+                    channel_chart.highlightStream();
+                    streamgraph.highlightStream();
+                });
+            let button_group = d3.select(STREAM_SELECTION_ID)
+                .append('div')
+                .style('height', '600px');
+            button_group.selectAll('button')
+                .data(stream_list)
+                .enter()
+                .append('button')
+                    .attr('class', 'button stream-button')
+                    .text(d => d.topic)
+                    .style('background-color', '#000')
+                    .style('color', '#fff')
+                    .style('opacity', .87)
+                    .on('click', click);
+            
+        }).catch((error) => {
+            console.log(error);
         });
 
     }).catch((error) => {
