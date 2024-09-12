@@ -47,6 +47,11 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 - created first draft stream-selection
 - setup stream highlight poc
 
+## update 9 - 12.09.2024
+- prepared data for migration matrix
+- created migration matrix poc
+- general cleanup
+
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
 M2 - 18 hours - 28.07.2024 -> work in progress milestone\

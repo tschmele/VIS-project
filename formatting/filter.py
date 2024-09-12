@@ -4,7 +4,7 @@ from os.path import isfile, join
 import pandas as pd
 
 folder_raw = 'data/raw_2022-01-01-2023-12-31/'
-folder_cut = 'data/discord/individual_channels'
+folder_cut = 'data/discord/individual_channels/'
 
 files = [f for f in listdir(folder_raw) if isfile(join(folder_raw, f))]
 

@@ -1,0 +1,76 @@
+t0,t1,c1,c2,sum
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,MAIN/cringe-cafe,MAIN/cringe-cafe,1
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,MAIN/cringe-cafe,,1
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,MAIN/dragons-den,,4
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,17
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,MAIN/general,MAIN/general,2
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,,MAIN/cringe-cafe,1
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,,MAIN/general,1
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,,MAIN/dragons-den,34
+2022-08-02 15:00:00+00:00,2022-08-02 16:00:00+00:00,,,223
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,MAIN/cringe-cafe,,2
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/zero-escape-spoiler-chan,7
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,MAIN/dragons-den,,12
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,32
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,MAIN/general,MAIN/general,1
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,MAIN/general,,2
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,,MAIN/general,2
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,,,59
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,,MAIN/dragons-den,66
+2022-08-02 16:00:00+00:00,2022-08-02 17:00:00+00:00,,archived stream spoiler chats/zero-escape-spoiler-chan,101
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,MAIN/dragons-den,MAIN/general,1
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/zero-escape-spoiler-chan,2
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,44
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,MAIN/dragons-den,,51
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,MAIN/general,MAIN/dragons-den,1
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,MAIN/general,MAIN/general,2
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,MAIN/dragons-den,8
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,archived stream spoiler chats/zero-escape-spoiler-chan,18
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,,82
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,,MAIN/cringe-cafe,1
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,,MAIN/share-stuff-you-made,1
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,,archived stream spoiler chats/zero-escape-spoiler-chan,4
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,,MAIN/dragons-den,21
+2022-08-02 17:00:00+00:00,2022-08-02 18:00:00+00:00,,,48
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/cringe-cafe,,1
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/dragons-den,MAIN/cringe-cafe,1
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/zero-escape-spoiler-chan,3
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/dragons-den,,27
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,43
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/general,MAIN/dragons-den,1
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/general,MAIN/general,2
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,MAIN/share-stuff-you-made,,1
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,MAIN/dragons-den,1
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,archived stream spoiler chats/zero-escape-spoiler-chan,4
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,,19
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,,MAIN/cringe-cafe,2
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,,archived stream spoiler chats/zero-escape-spoiler-chan,3
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,,MAIN/dragons-den,14
+2022-08-02 18:00:00+00:00,2022-08-02 19:00:00+00:00,,,162
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,MAIN/cringe-cafe,,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,MAIN/cringe-cafe,MAIN/cringe-cafe,2
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,MAIN/dragons-den,MAIN/cringe-cafe,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,MAIN/dragons-den,,28
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,30
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,MAIN/general,MAIN/general,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,MAIN/general,,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,MAIN/dragons-den,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,archived stream spoiler chats/zero-escape-spoiler-chan,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,,8
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,,MAIN/cringe-cafe,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,,MAIN/general,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,,MAIN/mental-health,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,,archived stream spoiler chats/zero-escape-spoiler-chan,1
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,,MAIN/dragons-den,15
+2022-08-02 19:00:00+00:00,2022-08-02 20:00:00+00:00,,,191
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,MAIN/cringe-cafe,,4
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,10
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,MAIN/dragons-den,,36
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,MAIN/general,MAIN/general,2
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,MAIN/mental-health,,1
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,archived stream spoiler chats/zero-escape-spoiler-chan,1
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,archived stream spoiler chats/zero-escape-spoiler-chan,,1
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,,MAIN/general,2
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,,archived stream spoiler chats/zero-escape-spoiler-chan,5
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,,MAIN/dragons-den,8
+2022-08-02 20:00:00+00:00,2022-08-02 21:00:00+00:00,,,214

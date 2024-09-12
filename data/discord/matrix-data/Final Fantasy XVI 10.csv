@@ -1,0 +1,141 @@
+t0,t1,c1,c2,sum
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,MAIN/cringe-cafe,,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,MAIN/dragons-den,MAIN/cringe-cafe,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,MAIN/dragons-den,dragons-den/Jenshin-Den,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,MAIN/dragons-den,,6
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,13
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,MAIN/general,MAIN/general,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,MAIN/general,,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,archived stream spoiler chats/ff16-spoilers,MAIN/cringe-cafe,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,2
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,archived stream spoiler chats/ff16-spoilers,archived stream spoiler chats/ff16-spoilers,3
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,dragons-den/Jenshin-Den,dragons-den/Jenshin-Den,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,dragons-den/Jenshin-Den,,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,dragons-den/evolve-idol,dragons-den/evolve-idol,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,dragons-den/roguelike-den,,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,1
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,,dragons-den/Jenshin-Den,2
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,,MAIN/cringe-cafe,3
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,,MAIN/dragons-den,23
+2023-07-09 01:00:00+00:00,2023-07-09 02:00:00+00:00,,,159
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,MAIN/cringe-cafe,MAIN/cringe-cafe,5
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,MAIN/dragons-den,,17
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,19
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,MAIN/general,MAIN/general,1
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,4
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,dragons-den/Jenshin-Den,dragons-den/Jenshin-Den,1
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,dragons-den/Jenshin-Den,,3
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,dragons-den/evolve-idol,,1
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,1
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,,MAIN/cringe-cafe,2
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,,dragons-den/Jenshin-Den,3
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,,dragons-den/roguelike-den,3
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,,MAIN/dragons-den,22
+2023-07-09 02:00:00+00:00,2023-07-09 03:00:00+00:00,,,140
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,MAIN/cringe-cafe,MAIN/dragons-den,1
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,MAIN/cringe-cafe,,6
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/ff16-spoilers,1
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,19
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,MAIN/dragons-den,,21
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,MAIN/general,,1
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,1
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,dragons-den/Jenshin-Den,MAIN/dragons-den,1
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,dragons-den/Jenshin-Den,,1
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,dragons-den/Jenshin-Den,dragons-den/Jenshin-Den,2
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,dragons-den/roguelike-den,,3
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,,dragons-den/Jenshin-Den,2
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,,MAIN/dragons-den,18
+2023-07-09 03:00:00+00:00,2023-07-09 04:00:00+00:00,,,143
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/ff16-spoilers,1
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,MAIN/dragons-den,,16
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,22
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,archived stream spoiler chats/ff16-spoilers,archived stream spoiler chats/ff16-spoilers,1
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,2
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,dragons-den/Jenshin-Den,dragons-den/Jenshin-Den,1
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,dragons-den/Jenshin-Den,,3
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,,MAIN/share-stuff-you-made,1
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,,dragons-den/Jenshin-Den,2
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,,MAIN/dragons-den,15
+2023-07-09 04:00:00+00:00,2023-07-09 05:00:00+00:00,,,156
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,MAIN/dragons-den,,16
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,21
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,MAIN/share-stuff-you-made,,1
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,archived stream spoiler chats/ff16-spoilers,MAIN/dragons-den,1
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,3
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,dragons-den/Jenshin-Den,MAIN/dragons-den,1
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,dragons-den/Jenshin-Den,,2
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,,MAIN/cringe-cafe,1
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,,dragons-den/evolve-idol,3
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,4
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,,MAIN/dragons-den,13
+2023-07-09 05:00:00+00:00,2023-07-09 06:00:00+00:00,,,156
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,MAIN/cringe-cafe,,1
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,MAIN/dragons-den,,13
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,21
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,archived stream spoiler chats/ff16-spoilers,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,2
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,dragons-den/evolve-idol,dragons-den/evolve-idol,1
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,dragons-den/evolve-idol,,2
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,,MAIN/cringe-cafe,1
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,,MAIN/share-stuff-you-made,1
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,,dragons-den/Jenshin-Den,2
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,,dragons-den/evolve-idol,2
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,,MAIN/dragons-den,22
+2023-07-09 06:00:00+00:00,2023-07-09 07:00:00+00:00,,,148
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,MAIN/cringe-cafe,,1
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,MAIN/dragons-den,dragons-den/Jenshin-Den,1
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,MAIN/dragons-den,dragons-den/evolve-idol,1
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,MAIN/dragons-den,,17
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,24
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,MAIN/share-stuff-you-made,,1
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,archived stream spoiler chats/ff16-spoilers,MAIN/dragons-den,1
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,archived stream spoiler chats/ff16-spoilers,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,3
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,dragons-den/Jenshin-Den,dragons-den/Jenshin-Den,2
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,dragons-den/evolve-idol,dragons-den/evolve-idol,1
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,dragons-den/evolve-idol,,2
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,,dragons-den/Jenshin-Den,1
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,,dragons-den/evolve-idol,2
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,3
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,,MAIN/dragons-den,22
+2023-07-09 07:00:00+00:00,2023-07-09 08:00:00+00:00,,,138
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,MAIN/dragons-den,,19
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,28
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,archived stream spoiler chats/ff16-spoilers,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,archived stream spoiler chats/ff16-spoilers,MAIN/dragons-den,3
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,dragons-den/Jenshin-Den,dragons-den/Jenshin-Den,4
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,dragons-den/evolve-idol,,4
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,,dragons-den/evolve-idol,1
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,,dragons-den/Jenshin-Den,2
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,,MAIN/dragons-den,24
+2023-07-09 08:00:00+00:00,2023-07-09 09:00:00+00:00,,,133
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,MAIN/dragons-den,dragons-den/Jenshin-Den,1
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,23
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,MAIN/dragons-den,,29
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,archived stream spoiler chats/ff16-spoilers,archived stream spoiler chats/ff16-spoilers,2
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,2
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,dragons-den/Jenshin-Den,MAIN/dragons-den,1
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,dragons-den/Jenshin-Den,,2
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,dragons-den/Jenshin-Den,dragons-den/Jenshin-Den,3
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,dragons-den/evolve-idol,,1
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,,dragons-den/evolve-idol,1
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,,dragons-den/Jenshin-Den,2
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,,archived stream spoiler chats/ff16-spoilers,4
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,,MAIN/dragons-den,13
+2023-07-09 09:00:00+00:00,2023-07-09 10:00:00+00:00,,,136
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,17
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,MAIN/dragons-den,,20
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,archived stream spoiler chats/ff16-spoilers,,8
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,dragons-den/Jenshin-Den,,6
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,dragons-den/evolve-idol,,1
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,,MAIN/cringe-cafe,2
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,,dragons-den/Jenshin-Den,2
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,,dragons-den/evolve-idol,2
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,,MAIN/dragons-den,18
+2023-07-09 10:00:00+00:00,2023-07-09 11:00:00+00:00,,,146

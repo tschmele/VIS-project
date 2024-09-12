@@ -1,6 +1,7 @@
 import { Timeline } from "./timeline.js";
 import { ChannelChart } from "./channel.js";
 import { Streamgraph } from "./streamgraph.js";
+import { Matrix } from "./matrix.js";
 // import { slider_snap } from "./slider.js";
 
 const FOLDER = '../data/discord/prepared/'
@@ -10,6 +11,7 @@ const FILES = [
 ]
 const TL_FILE = 'combined activitiy.csv'
 const STREAM_FILE = '../data/stream/streams.csv'
+const MATRIX_FOLDER = '../data/discord/matrix-data/'
 
 const SELECTOR_CHANNEL_ID = '#channel_select';
 const CHANNEL_ID = '#channel';
@@ -245,7 +247,8 @@ d3.csv(FOLDER+TL_FILE, d => {
                 Date: d3.utcParse('%Y-%m-%dT%H:%M:%S.%L%Z')(d.Date),
                 Duration: +d.Duration
             }
-        }).then(data => {
+        })
+        .then(data => {
             let stream_list = [];
             data.forEach(stream => {
                 if (stream_list.length == 0) {
@@ -286,10 +289,13 @@ d3.csv(FOLDER+TL_FILE, d => {
                     d3.select(this).style('background-color', '#fff');
                     d3.select(this).style('color', '#000');
                 }
+                
                 channel_chart.s_list = stream_list;
                 streamgraph.s_list = stream_list;
+                timeline.s_list = stream_list;
                 channel_chart.highlightStream();
                 streamgraph.highlightStream();
+                timeline.highlightStream();
                 
             }
 
@@ -312,8 +318,10 @@ d3.csv(FOLDER+TL_FILE, d => {
 
                     channel_chart.s_list = stream_list;
                     streamgraph.s_list = stream_list;
+                    timeline.s_list = stream_list;
                     channel_chart.highlightStream();
                     streamgraph.highlightStream();
+                    timeline.highlightStream();
                 });
             let everything_button = d3.select(STREAM_SELECTION_ID).append('button')
                 .attr('class', 'button stream-button')
@@ -328,15 +336,17 @@ d3.csv(FOLDER+TL_FILE, d => {
                     button_group.selectAll('button')
                         .style('background-color', '#fff')
                         .style('color', '#000');
-
+                        
                     channel_chart.s_list = stream_list;
                     streamgraph.s_list = stream_list;
+                    timeline.s_list = stream_list;
                     channel_chart.highlightStream();
                     streamgraph.highlightStream();
+                    timeline.highlightStream();
                 });
             let button_group = d3.select(STREAM_SELECTION_ID)
-                .append('div')
-                .style('height', '600px');
+                .append('div');
+                // .style('height', '350px');
             button_group.selectAll('button')
                 .data(stream_list)
                 .enter()
@@ -347,6 +357,62 @@ d3.csv(FOLDER+TL_FILE, d => {
                     .style('color', '#fff')
                     .style('opacity', .87)
                     .on('click', click);
+
+            /**
+             * start of matrix code
+             * create matrix , load files as needed ?
+             */
+
+            let matrix = new Matrix({
+                parentElement: MATRIX_ID,
+                containerWidth: channel_BBox.width,
+                containerHeight: 300
+            });
+
+            d3.csv(MATRIX_FOLDER + 'Rabi-Ribi 2' + '.csv', d => {
+                return {
+                    t0: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.t0),
+                    t1: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.t1),
+                    c1: d.c1,
+                    c2: d.c2,
+                    sum: +d.sum
+                }
+            })
+            .then(data => {
+                // console.log(data);
+                let m_data = {
+                    dimensions: [],
+                    channels: [],
+                    data: data
+                };
+
+                // console.log(data.map(row => row['t0']));
+                let start = d3.min(data.map(row => row['t0']));
+                let end = d3.max(data.map(row => row['t1']));
+                m_data.dimensions = d3.utcHour.range(start, d3.utcHour.offset(end, 1));
+                
+                m_data.channels = [...new Set(data.map(row => row['c1']).concat(data.map(row => row['c2'])))];
+                m_data.channels.splice(m_data.channels.indexOf(''), 1);
+                // console.log(m_data.channels);
+                m_data.channels.sort((a, b) => {
+                    // let a_channel = a.split('/')[1];
+                    // let b_channel = b.split('/')[1];
+                    // return ('' + a_channel).localeCompare(b_channel);
+                    return ('' + a).localeCompare(b);
+                });
+                // console.log(m_data.channels);
+
+                m_data.labels = m_data.channels.map(c => c.split('/')[1]);
+                // console.log(m_data.labels);
+                
+                matrix.data = m_data;
+                matrix.updateVis();
+                
+                
+
+            }).catch((error) => {
+                console.log(error);
+            });
             
         }).catch((error) => {
             console.log(error);

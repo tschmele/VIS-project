@@ -79,6 +79,45 @@ export class Timeline {
                 .attr('width', 1)
         
         vis.svg.node().dispatchEvent(new CustomEvent('rendered', {detail: {tframe: vis.config.timeframe}}));
+        if (vis.s_list != undefined) {
+            
+            // vis.s_list.forEach(stream => {
+            //     if (stream.streams[stream.streams.length - 1].end < vis.config.timeframe.start || vis.config.timeframe.end < stream.streams[0].start) {
+            //         if (stream.selected) {
+            //             vis.removed.push(stream)
+            //         }
+            //     }
+            // });
+
+            vis.highlightStream();
+        }
+    }
+
+    highlightStream() {
+        let vis = this;
+
+        vis.chart.selectAll('.stream-highlight').remove();
+
+        let streams = [];
+        vis.s_list.forEach(stream => {
+            if (stream.selected && (stream.streams[stream.streams.length - 1].end >= vis.config.timeframe.start || vis.config.timeframe.end >= stream.streams[0].start)) {
+                if (stream.streams[stream.streams.length - 1].end <= vis.config.timeframe.end && vis.config.timeframe.start <= stream.streams[0].start) {
+                    streams.push(stream.streams);
+                }
+            }
+        });
+        console.log(streams);
+        
+
+        streams.forEach(topic => {
+            vis.chart.append('path')
+                .attr('class', 'path area stream-highlight tooltip')
+                // .style('opacity', d => (d.end <= vis.config.timeframe.end && vis.config.timeframe.start <= d.start) ? .3 : .1)
+                .attr('d', d3.area()
+                    .x(d => vis.xScale(d.start))
+                    .y1(0)
+                    .y0(vis.height)(topic));
+        });
     }
 
 }
