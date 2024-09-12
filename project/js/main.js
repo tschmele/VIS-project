@@ -14,6 +14,7 @@ const STREAM_FILE = '../data/stream/streams.csv'
 const MATRIX_FOLDER = '../data/discord/matrix-data/'
 
 const SELECTOR_CHANNEL_ID = '#channel_select';
+const SELECTOR_MATRIX_ID = '#matrix_select';
 const CHANNEL_ID = '#channel';
 const TIMELINE_ID = '#timeline';
 const STREAMGRAPH_ID = '#streamgraph';
@@ -253,7 +254,7 @@ d3.csv(FOLDER+TL_FILE, d => {
             data.forEach(stream => {
                 if (stream_list.length == 0) {
                     stream_list.push({
-                        topic: stream['Stream'],
+                        topic: stream['Stream'].replace(/:/g, ' -'),
                         selected: false,
                         streams: [{
                             start: stream['Date'],
@@ -261,14 +262,14 @@ d3.csv(FOLDER+TL_FILE, d => {
                         }]
                     });
                 } else {
-                    if (stream_list[stream_list.length - 1].topic == stream['Stream']) {
+                    if (stream_list[stream_list.length - 1].topic == stream['Stream'].replace(/:/g, ' -')) {
                         stream_list[stream_list.length - 1].streams.push({
                             start: stream['Date'],
                             end: new Date(stream['Date'].getTime() + stream['Duration'])
                         });
                     } else {
                         stream_list.push({
-                            topic: stream['Stream'],
+                            topic: stream['Stream'].replace(/:/g, ' -'),
                             selected: false,
                             streams: [{
                                 start: stream['Date'],
@@ -278,16 +279,48 @@ d3.csv(FOLDER+TL_FILE, d => {
                     }
                 }
             });
+
+            /**
+             * set up matrix selector
+             * set up stream buttons
+             */
+            let matrix_categories = [];
+            
+            let matrix_label = d3.select(MATRIX_ID).append('label')
+                .attr('class', 'label')
+                .attr('for', 'matrix_select')
+                .text('select stream date: ');
+            const matrix_selector = d3.select(MATRIX_ID).append('select')
+                .attr('name', 'streams')
+                .attr('id', 'matrix_select');
             
             const click = function(d, i) {
                 if (i.selected) {
                     i.selected = false;
                     d3.select(this).style('background-color', '#000');
                     d3.select(this).style('color', '#fff');
+                    matrix_categories.splice(matrix_categories.indexOf(matrix_categories.find(c => c.attr('label') == i.topic)), 1);
+                    d3.select(SELECTOR_MATRIX_ID).selectAll('optgroup').select(function(d) {return (this.label == i.topic) ? this : null}).remove();
+                    if (matrix_categories.length > 0) {
+                        d3.select(SELECTOR_MATRIX_ID).node().dispatchEvent(new Event('change'));
+                    }
                 } else {
                     i.selected = true;
                     d3.select(this).style('background-color', '#fff');
                     d3.select(this).style('color', '#000');
+                    let first = (matrix_categories.length > 0) ? false : true;
+                    if (!matrix_categories.find(c => c.attr('label') == i.topic)) {
+                        matrix_categories.push(d3.select(SELECTOR_MATRIX_ID).append('optgroup')
+                            .attr('label', i.topic));
+                        i.streams.forEach(s => {
+                            matrix_categories[matrix_categories.length - 1].append('option')
+                                .attr('value', i.topic + ' ' + i.streams.indexOf(s))
+                                .text(d3.utcFormat('%Y-%m-%d %H:%M:%S')(s.start) + ' - ' + i.topic + ' ' + i.streams.indexOf(s));
+                        });
+                    }
+                    if (first) {
+                        d3.select(SELECTOR_MATRIX_ID).node().dispatchEvent(new Event('change'));
+                    }
                 }
                 
                 channel_chart.s_list = stream_list;
@@ -315,6 +348,9 @@ d3.csv(FOLDER+TL_FILE, d => {
                     button_group.selectAll('button')
                         .style('background-color', '#000')
                         .style('color', '#fff');
+                    
+                    matrix_categories = [];
+                    d3.select(SELECTOR_MATRIX_ID).selectAll('optgroup').remove();
 
                     channel_chart.s_list = stream_list;
                     streamgraph.s_list = stream_list;
@@ -330,13 +366,27 @@ d3.csv(FOLDER+TL_FILE, d => {
                 .style('color', '#fff')
                 .style('opacity', .87)
                 .on('click', (d, i) => {
+                    let first = (matrix_categories.length > 0) ? false : true;
                     stream_list.forEach(stream => {
                         stream.selected = true;
+                        if (!matrix_categories.find(c => c.attr('label') == stream.topic)) {
+                            matrix_categories.push(d3.select(SELECTOR_MATRIX_ID).append('optgroup')
+                                .attr('label', stream.topic));
+                            stream.streams.forEach(s => {
+                                matrix_categories[matrix_categories.length - 1].append('option')
+                                    .attr('value', stream.topic + ' ' + stream.streams.indexOf(s))
+                                    .text(d3.utcFormat('%Y-%m-%d %H:%M:%S')(s.start) + ' - ' + stream.topic + ' ' + stream.streams.indexOf(s));
+                            });
+                        }
                     });
                     button_group.selectAll('button')
                         .style('background-color', '#fff')
                         .style('color', '#000');
-                        
+                    
+                    if (first) {
+                        d3.select(SELECTOR_MATRIX_ID).node().dispatchEvent(new Event('change'));
+                    }
+
                     channel_chart.s_list = stream_list;
                     streamgraph.s_list = stream_list;
                     timeline.s_list = stream_list;
@@ -345,8 +395,8 @@ d3.csv(FOLDER+TL_FILE, d => {
                     timeline.highlightStream();
                 });
             let button_group = d3.select(STREAM_SELECTION_ID)
-                .append('div');
-                // .style('height', '350px');
+                .append('div')
+                .style('height', '300px');
             button_group.selectAll('button')
                 .data(stream_list)
                 .enter()
@@ -362,57 +412,49 @@ d3.csv(FOLDER+TL_FILE, d => {
              * start of matrix code
              * create matrix , load files as needed ?
              */
-
+                
             let matrix = new Matrix({
                 parentElement: MATRIX_ID,
                 containerWidth: channel_BBox.width,
                 containerHeight: 300
             });
 
-            d3.csv(MATRIX_FOLDER + 'Rabi-Ribi 2' + '.csv', d => {
-                return {
-                    t0: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.t0),
-                    t1: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.t1),
-                    c1: d.c1,
-                    c2: d.c2,
-                    sum: +d.sum
-                }
-            })
-            .then(data => {
-                // console.log(data);
-                let m_data = {
-                    dimensions: [],
-                    channels: [],
-                    data: data
-                };
-
-                // console.log(data.map(row => row['t0']));
-                let start = d3.min(data.map(row => row['t0']));
-                let end = d3.max(data.map(row => row['t1']));
-                m_data.dimensions = d3.utcHour.range(start, d3.utcHour.offset(end, 1));
-                
-                m_data.channels = [...new Set(data.map(row => row['c1']).concat(data.map(row => row['c2'])))];
-                m_data.channels.splice(m_data.channels.indexOf(''), 1);
-                // console.log(m_data.channels);
-                m_data.channels.sort((a, b) => {
-                    // let a_channel = a.split('/')[1];
-                    // let b_channel = b.split('/')[1];
-                    // return ('' + a_channel).localeCompare(b_channel);
-                    return ('' + a).localeCompare(b);
+            d3.select(SELECTOR_MATRIX_ID).node().addEventListener('change', function() {
+                d3.csv(MATRIX_FOLDER + this.value + '.csv', d => {
+                    return {
+                        t0: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.t0),
+                        t1: d3.utcParse("%Y-%m-%d %H:%M:%S%Z")(d.t1),
+                        c1: d.c1,
+                        c2: d.c2,
+                        sum: +d.sum
+                    }
+                })
+                .then(data => {
+                    let m_data = {
+                        dimensions: [],
+                        channels: [],
+                        data: data
+                    };
+    
+                    let start = d3.min(data.map(row => row['t0']));
+                    let end = d3.max(data.map(row => row['t1']));
+                    m_data.dimensions = d3.utcHour.range(start, d3.utcHour.offset(end, 1));
+                    
+                    m_data.channels = [...new Set(data.map(row => row['c1']).concat(data.map(row => row['c2'])))];
+                    m_data.channels.sort((a, b) => {
+                        return ('' + a).localeCompare(b);
+                    });
+                    
+                    m_data.labels = m_data.channels.map(c => c.split('/')[1]);
+                    
+                    matrix.data = m_data;
+                    matrix.updateVis();
+    
+                }).catch((error) => {
+                    console.log(error);
                 });
-                // console.log(m_data.channels);
-
-                m_data.labels = m_data.channels.map(c => c.split('/')[1]);
-                // console.log(m_data.labels);
-                
-                matrix.data = m_data;
-                matrix.updateVis();
-                
-                
-
-            }).catch((error) => {
-                console.log(error);
             });
+
             
         }).catch((error) => {
             console.log(error);

@@ -52,6 +52,10 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 - created migration matrix poc
 - general cleanup
 
+## update 10 - 12.09.2024
+- added selector for migration matrix
+- added interactivity between stream buttons and selector
+
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
 M2 - 18 hours - 28.07.2024 -> work in progress milestone\

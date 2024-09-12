@@ -106,8 +106,6 @@ export class Timeline {
                 }
             }
         });
-        console.log(streams);
-        
 
         streams.forEach(topic => {
             vis.chart.append('path')
