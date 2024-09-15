@@ -395,8 +395,7 @@ d3.csv(FOLDER+TL_FILE, d => {
                     timeline.highlightStream();
                 });
             let button_group = d3.select(STREAM_SELECTION_ID)
-                .append('div')
-                .style('height', '300px');
+                .append('div');
             button_group.selectAll('button')
                 .data(stream_list)
                 .enter()
@@ -412,10 +411,10 @@ d3.csv(FOLDER+TL_FILE, d => {
              * start of matrix code
              * create matrix , load files as needed ?
              */
-                
+            let matrix_BBox = d3.select(MATRIX_ID).node().getBoundingClientRect();
             let matrix = new Matrix({
                 parentElement: MATRIX_ID,
-                containerWidth: channel_BBox.width,
+                containerWidth: matrix_BBox.width,
                 containerHeight: 300
             });
 
