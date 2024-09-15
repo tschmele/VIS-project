@@ -33,6 +33,32 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 - setup streamgraph and separated it
 - added option to switch channel
 - added highlighting of selected channel in server streamgraph
+- finished cross-update between server streamgraph and channel chart
+
+## update 7 - 03.09.2024
+- added timeframe slider to the timeline
+- made server streamgraph and channel chart update xAxis based on timefram
+- reorganising and cleaning up
+
+## update 8 - 08.09.2024
+- added tooltip boxes to streamgraph and chart
+- added crosshair pointer to both
+- added parallel tooltip indicator for mouseX
+- created first draft stream-selection
+- setup stream highlight poc
+
+## update 9 - 12.09.2024
+- prepared data for migration matrix
+- created migration matrix poc
+- general cleanup
+
+## update 10 - 12.09.2024
+- added selector for migration matrix
+- added interactivity between stream buttons and selector
+
+## update 11 - 15.09.2024
+- restructured layout
+- minor visual touch-ups
 
 ### schedule v2
 M1 - 15 hours - 21.07.2024\

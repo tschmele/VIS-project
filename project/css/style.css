@@ -4,11 +4,16 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+h2{
+    padding-left: 2%;
+}
+
 #main{
     width: 100%;
-    max-width: 1220px;
+    max-width: 1400px;
     padding: 10px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 #timeline{
     width: 100%;
@@ -17,24 +22,45 @@ body{
     margin-bottom: 10px;
 }
 #graphs{
-    width: 100%;
+    width: 98%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 10px;
+    padding: 1%;
     columns: 2;
 }
 #streamgraph{
-    width: 95%;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
 }
 #channel{
-    width: 95%;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
+}
+#streams{
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding: 1%;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+.grid-item-left {
+   height: auto;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 10px;
+}
+.grid-item-right {
+    height: auto;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 10px;
 }
 
 .lv1{
@@ -46,10 +72,54 @@ body{
 .lv3{
     background-color: rgba(255, 255, 255, .08);
 }
+.lv4{
+    background-color: rgba(255, 255, 255, .09);
+}
+.lv6{
+    background-color: rgba(255, 255, 255, .11);
+}
+.lv8{
+    background-color: rgba(255, 255, 255, .12);
+}
+.lv12{
+    background-color: rgba(255, 255, 255, .14);
+}
+.lv16{
+    background-color: rgba(255, 255, 255, .15);
+}
+.lv24{
+    background-color: rgba(255, 255, 255, .16);
+}
 
+.tooltip{
+    pointer-events: none;
+}
+
+.infobox{
+    background-color: rgba(0, 0, 0, 0.95);
+    box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.crosshair{
+    stroke-width: 1;
+    visibility: hidden;
+}
+
+.stream-highlight{
+    fill: rgba(0, 0, 4, .3);
+    stroke: rgb(0, 0, 4);
+    /* opacity: .2; */
+    /* stroke-width: 2; */
+}
+
+.label{
+    fill: rgba(255, 255, 255, .87);
+    font-size: 12pt;
+    padding-left: 1%;
+}
 
 .axis{
-    font-size: 9px;
+    font-size: 9pt;
 }
 
 .bar{
@@ -59,13 +129,36 @@ body{
     fill: rgb(252, 253, 191);
 }
 
-.area{
-    stroke: rgb(252, 137, 97);
-    fill: rgb(252, 137, 97);
+.myArea{
+    cursor: none;
 }
-.line{
-    /* stroke: rgb(183, 55, 121); */
-    stroke: rgb(252, 137, 97);
-    stroke-width: 1px;
+.cArea{
+    cursor: none;
+}
+
+svg {
+	font-family: sans-serif;
+}
+
+rect.overlay {
+	stroke: none;
+}
+
+rect.selection {
+	stroke: rgba(255, 255, 255, .87);
     fill: none;
+    fill-opacity: 0.6;
+}
+
+#labelleft, #labelright {
+	/* dominant-baseline: hanging; */
+    font-size: 12px;
+}
+
+#labelleft {
+	text-anchor: end;
+}
+
+#labelright {
+	text-anchor: start;
 }

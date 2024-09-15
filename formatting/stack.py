@@ -19,7 +19,7 @@ from datetime import datetime, timedelta, timezone
 
 print('starting setup')
 
-folder = 'data/discord/'
+folder = 'data/discord/individual_channels/'
 target = 'data/discord/prepared/'
 
 files = [f for f in listdir(folder) if isfile(join(folder, f))]

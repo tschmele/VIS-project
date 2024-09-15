@@ -1,0 +1,96 @@
+t0,t1,c1,c2,sum
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,MAIN/cringe-cafe,MAIN/dragons-den,1
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,MAIN/dragons-den,,8
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,14
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,,MAIN/share-stuff-you-made,1
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,,MAIN/cringe-cafe,2
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,,MAIN/general,2
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,,MAIN/dragons-den,35
+2023-03-07 16:00:00+00:00,2023-03-07 17:00:00+00:00,,,186
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/cringe-cafe,MAIN/dragons-den,1
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/cringe-cafe,,1
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/dragons-den,Important/stream-announcements,1
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/dp-spoiler-chat-on-jads,4
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/dragons-den,,15
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,30
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/general,,2
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,MAIN/share-stuff-you-made,,1
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,,MAIN/share-stuff-you-made,1
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,,MAIN/cringe-cafe,3
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,,archived stream spoiler chats/dp-spoiler-chat-on-jads,35
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,,MAIN/dragons-den,70
+2023-03-07 17:00:00+00:00,2023-03-07 18:00:00+00:00,,,85
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,Important/stream-announcements,,1
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,MAIN/cringe-cafe,,3
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/dp-spoiler-chat-on-jads,2
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,MAIN/dragons-den,,49
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,50
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,MAIN/share-stuff-you-made,,1
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,MAIN/dragons-den,5
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,archived stream spoiler chats/dp-spoiler-chat-on-jads,8
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,,26
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,,MAIN/share-stuff-you-made,1
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,,MAIN/dragons-den,18
+2023-03-07 18:00:00+00:00,2023-03-07 19:00:00+00:00,,,85
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/dp-spoiler-chat-on-jads,3
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,MAIN/dragons-den,,20
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,50
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,MAIN/share-stuff-you-made,,1
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,archived stream spoiler chats/dp-spoiler-chat-on-jads,5
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,,5
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,,MAIN/cringe-cafe,1
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,,archived stream spoiler chats/dp-spoiler-chat-on-jads,1
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,,MAIN/dragons-den,27
+2023-03-07 19:00:00+00:00,2023-03-07 20:00:00+00:00,,,136
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,MAIN/cringe-cafe,,1
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,MAIN/dragons-den,MAIN/cringe-cafe,2
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,MAIN/dragons-den,archived stream spoiler chats/dp-spoiler-chat-on-jads,2
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,MAIN/dragons-den,,32
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,41
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,MAIN/dragons-den,1
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,archived stream spoiler chats/dp-spoiler-chat-on-jads,4
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,,4
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,,MAIN/cringe-cafe,7
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,,MAIN/dragons-den,17
+2023-03-07 20:00:00+00:00,2023-03-07 21:00:00+00:00,,,138
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,MAIN/cringe-cafe,MAIN/dragons-den,1
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,MAIN/cringe-cafe,MAIN/general,1
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,MAIN/cringe-cafe,MAIN/cringe-cafe,2
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,MAIN/cringe-cafe,,5
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,MAIN/dragons-den,,23
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,36
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,MAIN/dragons-den,1
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,archived stream spoiler chats/dp-spoiler-chat-on-jads,1
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,,4
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,,archived stream spoiler chats/dp-spoiler-chat-on-jads,1
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,,MAIN/general,2
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,,MAIN/dragons-den,39
+2023-03-07 21:00:00+00:00,2023-03-07 22:00:00+00:00,,,133
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,MAIN/cringe-cafe,,2
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,MAIN/dragons-den,MAIN/general,1
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,35
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,MAIN/dragons-den,,41
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,MAIN/general,MAIN/dragons-den,1
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,MAIN/general,,2
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,,2
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,,MAIN/general,1
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,,archived stream spoiler chats/dp-spoiler-chat-on-jads,2
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,,MAIN/dragons-den,15
+2023-03-07 22:00:00+00:00,2023-03-07 23:00:00+00:00,,,147
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,MAIN/dragons-den,,22
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,29
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,MAIN/general,,2
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,archived stream spoiler chats/dp-spoiler-chat-on-jads,,2
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,,MAIN/general,1
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,,MAIN/share-stuff-you-made,1
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,,MAIN/cringe-cafe,2
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,,MAIN/dragons-den,15
+2023-03-07 23:00:00+00:00,2023-03-08 00:00:00+00:00,,,175
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,MAIN/cringe-cafe,,2
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,MAIN/dragons-den,MAIN/dragons-den,22
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,MAIN/dragons-den,,22
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,MAIN/general,,1
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,MAIN/share-stuff-you-made,,1
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,,MAIN/cringe-cafe,3
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,,MAIN/dragons-den,12
+2023-03-08 00:00:00+00:00,2023-03-08 01:00:00+00:00,,,186
