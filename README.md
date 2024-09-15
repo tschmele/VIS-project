@@ -3,9 +3,12 @@ module : visualization \
 professor : thflo \
 author : tschmele 
 
-project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/documents/tschmele_project_proposal.pdf)
+project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/documents/tschmele_project_proposal.pdf) \
+project write-up : [here](https://github.com/tschmele/VIS-project/blob/main/documents/tschmele_project_write_up.pdf)
 
+entry point for web application : ./project/index.html
 
+# change log
 
 ## update 1 - 04.07.2024
 - updated project schedule
@@ -59,6 +62,7 @@ project proposal : [here](https://github.com/tschmele/VIS-project/blob/main/docu
 ## update 11 - 15.09.2024
 - restructured layout
 - minor visual touch-ups
+- added write-up
 
 ### schedule v2
 M1 - 15 hours - 21.07.2024\
